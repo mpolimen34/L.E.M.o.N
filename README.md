@@ -7,3 +7,7 @@ Design and implement a system to measure food waste in Pierce Dining Hall on Ste
 ## Authors
 
 Lynda Farinella, Eric Fernandes, Nathan Michener, Marco Polimeni
+
+### Instructions
+
+On Windows, type "pip install -r code\requirements.txt" to install all necessary python packages.
