@@ -10,4 +10,4 @@ Lynda Farinella, Eric Fernandes, Nathan Michener, Marco Polimeni
 
 ### Instructions
 
-On Windows, type "pip install -r code\requirements.txt" to install all necessary python packages.
+On Windows, type "pip install -r code\requirements.txt" to install all necessary python packages. This also works on linux terminals.
