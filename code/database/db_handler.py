@@ -1,8 +1,13 @@
 import sqlite3
+import atexit
 
 conn = sqlite3.connect('proto-base.db')
 
 c = conn.cursor()
+
+def exit_handler(): # closes database upon termination
+    conn.close()
+atexit.register(exit_handler)
 
 # c.execute("""CREATE TABLE test (
 #           id INTEGER PRIMARY KEY,
@@ -28,6 +33,3 @@ def get_table():
   return c.fetchall()
 
 # insert_new_food("pizza", 65, '2018-06-23', '09:10:00', 12)
-# print(get_table())
-
-conn.close()
