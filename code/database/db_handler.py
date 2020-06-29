@@ -33,3 +33,5 @@ def get_table():
   return c.fetchall()
 
 # insert_new_food("pizza", 65, '2018-06-23', '09:10:00', 12)
+# with conn:
+#   c.execute("DELETE from test WHERE id=2;")
