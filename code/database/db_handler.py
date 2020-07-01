@@ -1,5 +1,6 @@
 import sqlite3
 import atexit
+import data_display
 
 conn = sqlite3.connect('proto-base.db')
 
@@ -31,6 +32,9 @@ def get_food_info(name):
 def get_table():
   c.execute("SELECT * FROM test;")
   return c.fetchall()
+
+def display_table():
+  data_display.display()
 
 # insert_new_food("pizza", 65, '2018-06-23', '09:10:00', 12)
 # with conn:

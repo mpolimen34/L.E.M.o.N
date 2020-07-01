@@ -3,18 +3,21 @@ from PyQt5.QtWidgets import QTableView,QApplication
 import sys
 
 # Most code from: https://stackoverflow.com/questions/20993084/how-to-display-data-from-database-in-table-view-in-python
+def display():
+  app = QApplication(sys.argv)
 
-app = QApplication(sys.argv)
+  db = QSqlDatabase.addDatabase("QSQLITE")
+  db.setDatabaseName("proto-base.db")
+  db.open()
 
-db = QSqlDatabase.addDatabase("QSQLITE")
-db.setDatabaseName("proto-base.db")
-db.open()
+  projectModel = QSqlQueryModel()
+  projectModel.setQuery("select * from test",db)
 
-projectModel = QSqlQueryModel()
-projectModel.setQuery("select * from test",db)
+  projectView = QTableView()
+  projectView.setModel(projectModel)
 
-projectView = QTableView()
-projectView.setModel(projectModel)
+  projectView.show()
+  app.exec_()
 
-projectView.show()
-app.exec_()
+if __name__ == "__main__":
+  display()
