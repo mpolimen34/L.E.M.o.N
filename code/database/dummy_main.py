@@ -12,7 +12,7 @@ def main():
                                 now.strftime("%H:%M:%S"), 
                                 round(random.uniform(.25, 5.5), 3))
     time.sleep(2)
-  print(db_handler.get_table())
+  db_handler.display_table()
 
 def random_food():
   foods = ["hot dog", "pizza", "burger", "french fries", "lettuce",
