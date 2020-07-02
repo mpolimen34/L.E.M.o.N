@@ -1,3 +1,12 @@
 # ignore all __pycache__
 *.pyc
 *.pyo
+
+# ignore virtual environment
+env/
+
+# ignore jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# ignore vscode extensions
+.vscode
