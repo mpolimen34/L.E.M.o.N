@@ -10,3 +10,6 @@ env/
 
 # ignore vscode extensions
 .vscode
+
+# ignore images used for training and testing
+*.jpg
