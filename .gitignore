@@ -13,3 +13,6 @@ env/
 
 # ignore images used for training and testing
 *.jpg
+
+# ignore large trained model
+code/image_recognition/saved_model/
