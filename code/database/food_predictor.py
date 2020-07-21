@@ -1,15 +1,16 @@
-import tensorflow as tf
-from tensorflow import keras
 import numpy as np
 from PIL import Image
 import os
 import pathlib
 from pathlib import Path
-from tensorflow.keras import datasets, layers, models
+import tflite_runtime.interpreter as tflite
 
-model = tf.keras.models.load_model('../image_recognition/saved_model/my_model2')
-# Check its architecture
-# print(model.summary())
+
+interpreter = tflite.Interpreter(model_path='converted_model.tflite')
+interpreter.allocate_tensors()
+
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
 
 def predict(image_path, delete=True):
      # Get image from path
@@ -19,8 +20,14 @@ def predict(image_path, delete=True):
      class_names = ['chicken_wings', 'french_fries', 'grilled_cheese_sandwich',
        'hamburger', 'hot_dog', 'ice_cream', 'macaroni_and_cheese',
        'ramen', 'steak', 'waffles']
-     prediction = model.predict(np.array([np.asarray(image)]))
-     predicted_class = class_names[np.argmax(prediction)]
+     
+     input_data = np.array([np.asarray(image)], dtype=np.float32)
+     interpreter.set_tensor(input_details[0]['index'], input_data)
+     interpreter.invoke()
+
+     output_data = interpreter.get_tensor(output_details[0]['index'])
+
+     predicted_class = class_names[np.argmax(output_data)]
 
      #Delete image at path
      if delete:
