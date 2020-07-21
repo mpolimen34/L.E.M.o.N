@@ -7,7 +7,7 @@ import pathlib
 from pathlib import Path
 from tensorflow.keras import datasets, layers, models
 
-model = tf.keras.models.load_model('../image_recognition/saved_model/my_model')
+model = tf.keras.models.load_model('../image_recognition/saved_model/my_model2')
 # Check its architecture
 # print(model.summary())
 
