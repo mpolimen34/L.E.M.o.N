@@ -1,36 +1,41 @@
-import sqlite3
+import mysql.connector
 import atexit
 import data_display
 
-conn = sqlite3.connect('proto-base.db')
+mydb = mysql.connector.connect(
+  host="155.246.80.48",
+  user="lemon-team",
+  password="lemon-team",
+  database="lemon"
+)
 
-c = conn.cursor()
+# print(mydb)
+
+c = mydb.cursor()
 
 def exit_handler(): # closes database upon termination
     conn.close()
 atexit.register(exit_handler)
 
-# c.execute("""CREATE TABLE test (
+# c.execute("""CREATE TABLE food (
 #           id INTEGER PRIMARY KEY,
 #           name TEXT,
-#           heat INTEGER,
 #           date DATE,
-#           time TIME,
-#           weight FLOAT
+#           time TIME
 #           );""")
 
 def insert_new_food(name, heat, date, time, weight):
   with conn: # Commits the change to the database
-    c.execute("""INSERT INTO test (name, heat, date, 
+    c.execute("""INSERT INTO food (name, heat, date, 
               time, weight) VALUES (?, ?, ?, ?, ?);""",
               (name, heat, date, time, weight))
 
 def get_food_info(name):
-  c.execute("SELECT * FROM test WHERE name=:name", {'name': name})
+  c.execute("SELECT * FROM food WHERE name=:name", {'name': name})
   return c.fetchall()
 
 def get_table():
-  c.execute("SELECT * FROM test;")
+  c.execute("SELECT * FROM food;")
   return c.fetchall()
 
 def display_table():
