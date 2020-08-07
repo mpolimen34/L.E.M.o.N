@@ -16,3 +16,6 @@ env/
 
 # ignore large trained model
 code/image_recognition/saved_model/
+
+# ignore authentication
+code/database/auth.py

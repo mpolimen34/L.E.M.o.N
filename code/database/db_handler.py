@@ -1,12 +1,12 @@
 import mysql.connector
 import atexit
-#import data_display
+import auth
 
 mydb = mysql.connector.connect(
-  host="155.246.80.48",
-  user="lemon-team",
-  password="lemon-team",
-  database="lemon"
+  host=auth.host(),
+  user=auth.user(),
+  password=auth.password(),
+  database=auth.database()
 )
 
 # print(mydb)
