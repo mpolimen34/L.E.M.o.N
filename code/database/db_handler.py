@@ -1,6 +1,6 @@
 import mysql.connector
 import atexit
-import data_display
+#import data_display
 
 mydb = mysql.connector.connect(
   host="155.246.80.48",
@@ -38,8 +38,8 @@ def get_table():
   c.execute("SELECT * FROM food;")
   return c.fetchall()
 
-def display_table():
-  data_display.display()
+#def display_table():
+# data_display.display()
 
 # insert_new_food("pizza", 65, '2018-06-23', '09:10:00', 12)
 # with conn:
